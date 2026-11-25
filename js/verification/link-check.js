@@ -1,0 +1,1 @@
+function checkLink(i){return {label:i.linkOk===true?'Application link is reachable (admin checked)':i.linkOk===false?'Application link failed the reachability check':'Application link has not been checked by an admin',ok:i.linkOk===true}}

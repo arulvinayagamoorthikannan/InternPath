@@ -1,0 +1,11 @@
+function degreeKey(value){const v=(value||'').toUpperCase().replace(/[^A-Z0-9]/g,'');const aliases={'BACHELOROFENGINEERING':'BE','BACHELOROFTECHNOLOGY':'BTECH','MASTEROFENGINEERING':'ME','MASTEROFTECHNOLOGY':'MTECH','BACHELOROFCOMPUTERAPPLICATIONS':'BCA','MASTEROFCOMPUTERAPPLICATIONS':'MCA','BACHELOROFCOMMERCE':'BCOM','MASTEROFCOMMERCE':'MCOM','BACHELOROFBUSINESSADMINISTRATION':'BBA','MASTEROFBUSINESSADMINISTRATION':'MBA','BACHELOROFSCIENCE':'BSC','MASTEROFSCIENCE':'MSC','BACHELOROFDESIGN':'BDES','BACHELOROFFINEARTS':'BFA','BACHELOROFPHARMACY':'BPHARM'};for(const k in aliases)if(v===k||v.indexOf(k)===0)return aliases[k];const codes=['BTECH','MTECH','BCA','MCA','BCOM','MCOM','BBA','MBA','BSC','MSC','BDES','BFA','BPHARM','BE','ME'];for(const code of codes)if(v.indexOf(code)===0)return code;return v}
+function checkEligibility(p,i){const matched=[],missing=[];let s=0;
+if(i.years.includes(p.year)){s+=20;matched.push('Academic year')}else missing.push('Open to year '+i.years.join('/')+' students only');
+const degrees=i.degrees||['ANY'],degree=degreeKey(p.degree);if(degrees.includes('ANY')||degrees.some(d=>degreeKey(d)===degree)){s+=20;matched.push('Degree')}else missing.push('Preferred degrees: '+degrees.join(', '));
+if(i.departments.includes('ANY')||i.departments.includes(p.department)){s+=20;matched.push('Department')}else missing.push('Preferred departments: '+i.departments.join(', '));
+const have=i.skills.filter(k=>p.skills.includes(k)),lack=i.skills.filter(k=>!p.skills.includes(k));s+=Math.round(30*have.length/i.skills.length);
+have.forEach(k=>matched.push('Skill: '+k));lack.forEach(k=>missing.push('Skill to learn: '+k));
+if(p.months>=i.months){s+=5;matched.push('Availability')}else missing.push('Needs '+i.months+' months availability');
+if(!p.mode||p.mode===i.mode){s+=5;matched.push('Work mode')}else missing.push('Work mode is '+i.mode);
+return {score:s,matched,missing,level:s>=75?'Strong match':s>=50?'Partial match':'Low match'}}
+function eligibilityHTML(r){return `<section class="card"><h3>Your eligibility: ${r.score}% – ${r.level}</h3><div class="bar"><i style="width:${r.score}%"></i></div><p class="ok">✔ ${r.matched.map(esc).join(' · ')||'—'}</p><p class="bad">✖ ${r.missing.map(esc).join(' · ')||'Nothing missing'}</p><small>Guidance only; does not guarantee selection.</small></section>`}

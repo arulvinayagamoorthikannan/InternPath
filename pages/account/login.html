@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign In – InternPath</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/auth.css">
+</head>
+<body class="auth-page" data-base="../../" data-scripts="student/login">
+  <header class="auth-header">
+    <a class="auth-brand" href="../../index.html" aria-label="InternPath home"><span>Intern</span>Path</a>
+    <a class="auth-back" href="../../index.html"><span aria-hidden="true">←</span> Back to Home</a>
+  </header>
+  <div id="auth-error" role="alert"></div>
+  <main class="auth-main">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-card-heading">
+        <p class="auth-eyebrow">WELCOME BACK</p>
+        <h1 id="auth-title">Sign in to InternPath</h1>
+        <p>Pick up where your career journey left off.</p>
+      </div>
+      <form class="form auth-form" id="lf" novalidate>
+        <label>Email address
+          <input name="email" type="email" autocomplete="username" placeholder="you@college.edu" required>
+        </label>
+        <label>Password
+          <span class="password-control"><input name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required><button class="password-toggle" type="button" data-password-toggle="password" aria-pressed="false">Show</button></span>
+        </label>
+        <div class="auth-form-options">
+          <label class="remember-option"><input id="remember" name="remember" type="checkbox" checked> <span>Remember me</span></label>
+          <a href="reset-password.html">Forgot password?</a>
+        </div>
+        <p class="form-message" id="err" role="alert" aria-live="polite"></p>
+        <button class="btn auth-primary auth-submit" type="submit">Sign In <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="auth-switch">New to InternPath? <a href="register.html">Create an account</a></p>
+    </section>
+    <p class="auth-privacy">Your account is securely managed with Supabase Authentication.</p>
+  </main>
+  <script src="../../js/boot.js"></script>
+</body>
+</html>

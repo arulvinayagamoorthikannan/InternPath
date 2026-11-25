@@ -1,0 +1,2 @@
+function checkSource(i){const s=allSources().find(x=>x.id==i.sourceId);return {label:'Listed from a trusted source'+(s?' ('+s.name+')':''),ok:!!(s&&s.trusted)}}
+(function(){const b=document.getElementById('tsrc');if(b)b.innerHTML=allSources().map(s=>`<div class="card"><h3>${esc(s.name)}</h3><p>${esc(s.type)}</p><span class="badge ${s.trusted?'ok':'bad'}">${s.trusted?'Trusted':'Not trusted'}</span></div>`).join('')})();

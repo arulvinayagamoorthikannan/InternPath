@@ -1,0 +1,1 @@
+function searchList(list,q){q=(q||'').toLowerCase().trim();if(!q)return list;return list.filter(i=>[i.title,i.practice?i.companyName:companyOf(i.companyId).name,domainName(i.domain),...i.skills].join(' ').toLowerCase().includes(q))}

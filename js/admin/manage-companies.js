@@ -1,0 +1,11 @@
+(function(){requireAdmin();const box=document.getElementById('companies-box');
+function validSite(site){try{const u=new URL(site);return u.protocol==='https:'&&!/(^|\.)(example|invalid|test|localhost)$/i.test(u.hostname)&&!/(^|\.)example\.(com|net|org)$/i.test(u.hostname)&&!/^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|169\.254\.|0\.|\[)/i.test(u.hostname)&&!/\.(local|internal)$/i.test(u.hostname)}catch{return false}}
+function draw(){box.innerHTML=`<table><thead><tr><th>Company</th><th>Official site</th><th>Location</th><th>Status</th><th>Action</th></tr></thead><tbody>${COMPANIES.map(c=>`<tr><td>${esc(c.name)}</td><td>${esc(c.site)}</td><td>${esc(c.location)}</td><td>${c.verified?'Verified':'Not verified'}</td><td><button data-id="${c.id}" data-v="${!c.verified}">${c.verified?'Revoke verification':'Verify company'}</button></td></tr>`).join('')}</tbody></table>
+<form class="form" id="company-form"><h2>Add company for review</h2><label>Company name<input name="name" required></label><label>Official HTTPS website<input name="site" type="url" placeholder="https://company.example.com" required></label><label>Location<input name="location" required></label><button class="btn">Add unverified company</button></form>`;
+box.querySelectorAll('[data-id]').forEach(b=>b.onclick=async()=>{const verified=b.dataset.v==='true',company=COMPANIES.find(c=>c.id==b.dataset.id);if(verified&&!validSite(company.site))return toast('A real official HTTPS company website is required');
+if(verified&&!confirm('Verify this company only after checking its official website and identity. Continue?'))return;
+try{await DB.setCompanyVerified(+b.dataset.id,verified);draw()}catch(er){toast(er.message)}});
+document.getElementById('company-form').onsubmit=async e=>{e.preventDefault();const f=e.target,name=f.elements.namedItem('name').value.trim(),site=f.elements.namedItem('site').value.trim(),location=f.elements.namedItem('location').value.trim();
+try{const u=new URL(site);if(!validSite(u.href))return toast('Enter a real official HTTPS company website');
+if(COMPANIES.some(c=>c.name.toLowerCase()===name.toLowerCase()))return toast('That company is already listed');
+await DB.addCompany({name,site:u.href,location});draw()}catch(er){toast(er.message||'Enter a valid official HTTPS company website')}}}draw()})();

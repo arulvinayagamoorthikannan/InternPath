@@ -1,0 +1,38 @@
+.roadmap-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr))}
+.roadmap-tile{display:flex;flex-direction:column;gap:.45rem;min-height:250px}
+.roadmap-tile h2,.roadmap-tile p{margin:.15rem 0}
+.roadmap-tile .btn{align-self:flex-start;margin-top:auto}
+.roadmap-eyebrow{margin:.25rem 0;color:var(--pri);font-size:.72rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+.roadmap-tile>p:not(.roadmap-eyebrow),.roadmap-hero>p:not(.roadmap-eyebrow){color:var(--mut)}
+.roadmap-count{font-size:.86rem}
+.roadmap-hero{margin:0 0 1.25rem;padding:1.5rem;background:linear-gradient(125deg,rgba(47,91,234,.09),var(--card));border:1px solid var(--bd);border-radius:14px}
+.roadmap-hero h1{margin:.2rem 0 .45rem}
+.roadmap-hero>p:not(.roadmap-eyebrow){max-width:760px;margin:.4rem 0 1rem}
+.roadmap-progress-panel{margin:1rem 0 2rem;padding:1rem 1.2rem;background:var(--card);border:1px solid var(--bd);border-radius:12px}
+.roadmap-progress-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.roadmap-progress-head .roadmap-eyebrow{margin:0}
+.roadmap-progress-head strong{font-size:1.75rem;color:var(--pri)}
+.roadmap-progress-head>p{margin:0 0 .25rem;color:var(--mut)}
+.roadmap-stage{margin:2rem 0}
+.roadmap-stage-heading{display:flex;align-items:center;gap:.8rem;margin-bottom:.75rem}
+.roadmap-stage-heading>span{padding:.3rem .6rem;border-radius:99px;background:var(--bd);color:var(--pri);font-size:.76rem;font-weight:750;white-space:nowrap}
+.roadmap-stage-heading h2{margin:.25rem 0}
+.roadmap-skill{margin:.8rem 0;padding:clamp(1rem,3vw,1.4rem)}
+.roadmap-skill-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.roadmap-skill-heading h3{margin:.15rem 0 .5rem}
+.roadmap-level,.resource-access{flex:none;padding:.2rem .55rem;border-radius:99px;background:var(--bd);color:var(--mut);font-size:.76rem;font-weight:700}
+.roadmap-complete{display:flex;align-items:center;gap:.5rem;margin:.5rem 0 1rem;font-weight:650}
+.roadmap-complete input{width:auto;accent-color:var(--pri)}
+.roadmap-skill h4{margin:1.2rem 0 .4rem}
+.roadmap-topics{margin:.35rem 0;padding-left:1.5rem}
+.roadmap-topics li{padding:.14rem 0}
+.roadmap-resources{display:grid;gap:.5rem;margin:.4rem 0;padding:0;list-style:none}
+.roadmap-resources li{display:flex;align-items:center;justify-content:space-between;gap:.7rem;padding:.65rem .75rem;border:1px solid var(--bd);border-radius:9px}
+.roadmap-resources a{font-weight:650;text-decoration:none}
+.roadmap-resources a:hover{text-decoration:underline}
+.resource-access{background:rgba(22,135,74,.1);color:var(--ok)}
+.roadmap-project{margin:2rem 0;padding:clamp(1.2rem,4vw,2rem);border-color:rgba(47,91,234,.3)}
+.roadmap-project h2{margin:.3rem 0}
+.roadmap-project h3{margin:1.1rem 0 .35rem}
+.roadmap-project li{margin:.3rem 0}
+@media(max-width:600px){.roadmap-progress-head{align-items:flex-start;flex-direction:column;gap:.1rem}.roadmap-stage-heading{align-items:flex-start;flex-direction:column;gap:.2rem}.roadmap-resources li{align-items:flex-start}.roadmap-skill-heading{flex-direction:column;gap:.25rem}}

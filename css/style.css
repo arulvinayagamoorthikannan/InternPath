@@ -1,0 +1,22 @@
+:root{--bg:#f6f8fc;--fg:#1c2433;--mut:#64708a;--pri:#2f5bea;--card:#fff;--bd:#e1e6f0;--ok:#16874a;--warn:#b7791f;--bad:#c53030}
+@media(prefers-color-scheme:dark){:root{--bg:#10141f;--fg:#e8ecf5;--mut:#9aa6bf;--card:#192031;--bd:#2a3347;--pri:#6b8cff}}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);line-height:1.5}
+.container{max-width:1100px;margin:auto;padding:1.5rem 1rem;min-height:70vh}a{color:var(--pri)}.muted{color:var(--mut)}
+.btn,button{background:var(--pri);color:#fff;border:0;border-radius:8px;padding:.55rem 1rem;cursor:pointer;text-decoration:none;display:inline-block;font:inherit}.btn.ghost{background:transparent;color:var(--pri);border:1px solid var(--pri)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem;margin:1rem 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1rem}.row{display:flex;justify-content:space-between;gap:.5rem;align-items:flex-start}.row h3{margin:0}
+.tag{background:var(--bd);border-radius:99px;padding:.1rem .6rem;margin-right:.3rem;font-size:.8rem}
+.badge{font-size:.75rem;padding:.15rem .6rem;border-radius:99px;white-space:nowrap;color:#fff}.badge.ok{background:var(--ok)}.badge.warn{background:var(--warn)}.badge.bad{background:var(--bad)}
+.ok{color:var(--ok)}.bad{color:var(--bad)}.checks{list-style:none;padding:0}.filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin-bottom:1rem}
+input,select,textarea{width:100%;padding:.5rem;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}input[type=checkbox]{width:auto}
+.form{display:grid;gap:.8rem;max-width:520px;background:var(--card);padding:1rem;border:1px solid var(--bd);border-radius:12px}.form label{display:grid;gap:.25rem;font-size:.9rem}
+table{width:100%;border-collapse:collapse;background:var(--card)}th,td{padding:.6rem;border-bottom:1px solid var(--bd);text-align:left}td button{padding:.2rem .5rem;font-size:.8rem}
+.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin:.5rem 0}.bar i{display:block;height:100%;background:var(--pri)}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap}.steps li{margin:.5rem 0}.toast{position:fixed;bottom:1rem;right:1rem;background:#222;color:#fff;padding:.7rem 1rem;border-radius:8px}
+.catalogue-note{margin:1rem 0;padding:.85rem 1rem;border:1px solid var(--warn);border-left-width:5px;border-radius:8px;background:var(--card);color:var(--fg)}
+footer{text-align:center;padding:2rem 1rem;color:var(--mut);border-top:1px solid var(--bd)}
+/* badge text must stay white (.ok/.bad text colors above would otherwise make it invisible) */
+.badge.ok,.badge.warn,.badge.bad{color:#fff}
+.card.domain{display:flex;align-items:center;gap:.9rem;text-decoration:none;color:var(--fg);font-weight:600;transition:transform .15s,box-shadow .15s}
+.card.domain:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+.d-ico{width:44px;height:44px;border-radius:12px;background:var(--bd);display:grid;place-items:center;font-size:1.4rem;flex:none}

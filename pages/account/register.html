@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Create Account – InternPath</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/auth.css">
+</head>
+<body class="auth-page" data-base="../../" data-scripts="student/register">
+  <header class="auth-header">
+    <a class="auth-brand" href="../../index.html" aria-label="InternPath home"><span>Intern</span>Path</a>
+    <a class="auth-back" href="../../index.html"><span aria-hidden="true">←</span> Back to Home</a>
+  </header>
+  <div id="auth-error" role="alert"></div>
+  <main class="auth-main auth-main-wide">
+    <section class="auth-card" aria-labelledby="auth-title">
+      <div class="auth-card-heading">
+        <p class="auth-eyebrow">YOUR NEXT STEP</p>
+        <h1 id="auth-title">Create your account</h1>
+        <p>Set up your student profile and start exploring opportunities.</p>
+      </div>
+      <form class="form auth-form auth-form-grid" id="rf" novalidate>
+        <label>Full name
+          <input name="name" type="text" autocomplete="name" placeholder="Your full name" required>
+        </label>
+        <label>Email address
+          <input name="email" type="email" autocomplete="email" placeholder="you@college.edu" required>
+        </label>
+        <label>College name
+          <input name="college" type="text" autocomplete="organization" placeholder="Your college or university" required>
+        </label>
+        <label>Department
+          <input name="department" type="text" placeholder="e.g. Computer Science" required>
+        </label>
+        <label>Current year of study
+          <select name="year" required>
+            <option value="">Select your year</option>
+            <option value="1">Year 1</option>
+            <option value="2">Year 2</option>
+            <option value="3">Year 3</option>
+            <option value="4">Year 4</option>
+          </select>
+        </label>
+        <span class="auth-form-spacer" aria-hidden="true"></span>
+        <label>Password
+          <span class="password-control"><input name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" required><button class="password-toggle" type="button" data-password-toggle="password" aria-pressed="false">Show</button></span>
+        </label>
+        <label>Confirm password
+          <span class="password-control"><input name="confirmPassword" type="password" autocomplete="new-password" placeholder="Re-enter your password" required><button class="password-toggle" type="button" data-password-toggle="confirmPassword" aria-pressed="false">Show</button></span>
+        </label>
+        <p class="form-message auth-form-spread" id="err" role="alert" aria-live="polite"></p>
+        <button class="btn auth-primary auth-submit auth-form-spread" type="submit">Create Account <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="auth-switch">Already have an account? <a href="login.html">Sign In</a></p>
+    </section>
+    <p class="auth-privacy">Your details help personalize internship recommendations and profile setup.</p>
+  </main>
+  <script src="../../js/boot.js"></script>
+</body>
+</html>

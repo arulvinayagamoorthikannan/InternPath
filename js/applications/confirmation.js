@@ -1,0 +1,4 @@
+(function(){requireLogin();const box=document.getElementById('confirmation-message'),title=document.getElementById('confirmation-title'),id=qs('id'),internship=findInternship(id),application=internship&&!internship.practice?trackerFind(internship.id):null;
+if(!application||application.status!=='Submitted'){title.textContent='Application not found';box.innerHTML='<p>No submitted application was found for this internship.</p><a class="btn ghost" href="../internships/all.html">Browse internships</a>';return}
+title.textContent='Application submitted';
+box.innerHTML=`<p>Your application for <strong>${esc(internship.title)}</strong> has been recorded.</p><p>Track its status in your <a href="tracker.html">application tracker</a>.</p><a class="btn ghost" href="../internships/details.html?id=${encodeURIComponent(internship.id)}">Return to internship details</a>`})();

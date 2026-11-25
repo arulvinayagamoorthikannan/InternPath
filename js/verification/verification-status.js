@@ -1,0 +1,5 @@
+function checkDetails(i){const need=['title','companyId','stipend','months','deadline','skills'];return {label:'Company, stipend, duration & eligibility details present',ok:need.every(k=>i[k]!==undefined&&i[k]!==''&&!(Array.isArray(i[k])&&!i[k].length))}}
+function checkCompany(i){const c=companyOf(i.companyId);let validSite=false;try{const u=new URL(c.site);validSite=u.protocol==='https:'&&!/(^|\.)(example|invalid|test|localhost)$/i.test(u.hostname)&&!/(^|\.)example\.(com|net|org)$/i.test(u.hostname)&&!/^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|169\.254\.|0\.|\[)/i.test(u.hostname)&&!/\.(local|internal)$/i.test(u.hostname)}catch{}
+return {label:'Company identity and official HTTPS site reviewed by an admin',ok:!!c.verified&&validSite}}
+function computeStatus(i){const checks=[checkCompany(i),checkSource(i),checkLink(i),checkDetails(i),checkDeadline(i),{label:'Reviewed by an InternPath admin',ok:!!i.adminVerified}];
+let status='Unverified';if(!checks[4].ok)status='Expired';else if(checks.every(c=>c.ok))status='Verified';else if(checks[0].ok&&checks[1].ok&&checks[2].ok)status='Partially Verified';return {status,checks}}
